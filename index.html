@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- FONTS -->
+    <link
+      href="https://api.fontshare.com/v2/css?f[]=space-grotesk@300,700,500,400,600&display=swap"
+      rel="stylesheet"
+    />
+    <link href="Style.css" rel="stylesheet" />
+
+    <title>TO DO APP</title>
+  </head>
+  <body>
+    <div>
+      <header>
+        <h1 class="heading">To Do App</h1>
+        <!--SEARCH-->
+        <input placeholder="Search Tasks" id="searchInput" class="searchInput" />
+      </header>
+    </div>
+
+    <!-- FORM -->
+    <form>
+      <!--  INPUT FIELD -->
+      <input placeholder="Enter Your To Do Task...." id="taskInput" />
+      <!-- BUTTON -->
+      <button id="addBtn">ADD</button>
+    </form>
+
+    <!--TASKS LIST-->
+    <div>
+      <ul id="taskList"></ul>
+    </div>
+    <!--PAGINATION-->
+    <div class="pagination">
+      <button class="previousBtn" onclick="goToPrevious()">Previous</button>
+      <button class="nextBtn" onclick="goToNext()">Next</button>
+  </div>
+  </body>
+  <!--JS FILE-->
+  <script src="index.js"></script>
+  
+</html>

@@ -118,6 +118,7 @@ function deleteTask(index) {
   localStorage.setItem("tasks", JSON.stringify(tasks));
   renderTasks();
 }
+//function when task completes
 function toggleComplete(index) {
     tasks[index].completed = !tasks[index].completed;
     localStorage.setItem("tasks", JSON.stringify(tasks));
@@ -139,11 +140,18 @@ function searchTask() {
   const searchInput = document.getElementById("searchInput");
   const searchItem = searchInput.value.trim().toLowerCase();
 
+  if (searchItem === "") {
+    renderTasks(); // Call renderTasks() to show all tasks and pagination
+    return;
+  }
+
   const filteredTasks = tasks.filter(function (task) {
     return task.text.toLowerCase().includes(searchItem);
   });
+
   renderFilteredTasks(filteredTasks);
 }
+
 
 function renderFilteredTasks(filteredTasks) {
   const taskList = document.getElementById("taskList");

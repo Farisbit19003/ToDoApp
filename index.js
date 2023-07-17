@@ -153,6 +153,8 @@ function searchTask() {
 }
 
 
+// function to show search results and handle them
+
 function renderFilteredTasks(filteredTasks) {
   const taskList = document.getElementById("taskList");
   taskList.innerHTML = "";
@@ -179,14 +181,15 @@ function renderFilteredTasks(filteredTasks) {
     const deleteBtn = document.createElement("button");
     deleteBtn.textContent = "Delete";
     deleteBtn.addEventListener("click", function () {
-      deleteTask(index);
+      deleteTask(tasks.indexOf(task));
     });
 
     const completeBtn = document.createElement("button");
-    completeBtn.textContent = "Complete";
+    completeBtn.textContent = task.completed ? "Uncomplete" : "Complete";
     completeBtn.addEventListener("click", function () {
-      toggleComplete(index);
+      toggleComplete(tasks.indexOf(task));
       taskText.classList.toggle("complete-task");
+      completeBtn.textContent = task.completed ? "Uncomplete" : "Complete";
     });
 
     taskActions.appendChild(deleteBtn);
@@ -195,11 +198,16 @@ function renderFilteredTasks(filteredTasks) {
     taskItem.appendChild(taskText);
     taskItem.appendChild(taskActions);
 
-    
+    if (task.completed) {
+      taskText.classList.add("complete-task");
+    }
 
     taskList.appendChild(taskItem);
   });
 }
+
+
+
 
 document.getElementById("addBtn").addEventListener("click", addTask);
 document.getElementById("searchInput").addEventListener("input", searchTask);
